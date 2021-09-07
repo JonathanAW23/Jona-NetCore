@@ -95,6 +95,11 @@ namespace NETCore.Repository.Data
             account.Password = BCrypt.Net.BCrypt.HashPassword(getPersonVM.Password);
             myContext.Accounts.Add(account);
 
+            AccountRole accountRole = new AccountRole();
+            accountRole.NIK = getPersonVM.NIK;
+            accountRole.Role_Id = 1;
+            myContext.AccountRoles.Add(accountRole);
+
             Education education = new Education();
             education.Degree = getPersonVM.Degree;
             education.GPA = getPersonVM.GPA;

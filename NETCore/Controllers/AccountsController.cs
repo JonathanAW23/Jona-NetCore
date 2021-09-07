@@ -1,13 +1,18 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using NETCore.Base;
 using NETCore.Models;
 using NETCore.Repository.Data;
 using NETCore.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace NETCore.Controllers
@@ -17,9 +22,11 @@ namespace NETCore.Controllers
     public class AccountsController : BaseController<Account, AccountRepository, string>
     {
         private readonly AccountRepository accountRepository;
-        public AccountsController(AccountRepository repository) : base(repository)
+        public IConfiguration configuration;
+        public AccountsController(IConfiguration config, AccountRepository repository) : base(repository)
         {
             this.accountRepository = repository;
+            this.configuration = config;
         }
 
         [HttpPost("Login")]
@@ -33,7 +40,22 @@ namespace NETCore.Controllers
             }
             else if (accountRepository.CheckPassword(NIK, loginVM.Password))
             {
-                return StatusCode((int)HttpStatusCode.OK, new { status = (int)HttpStatusCode.OK, data = "Berhasil login" });
+                string[] roles = accountRepository.GetRole(NIK);
+                var claims = new List<Claim>();
+                claims.Add(new Claim("NIK", NIK));
+                claims.Add(new Claim("email", loginVM.Email));
+                foreach (string role in roles) 
+                {
+                    claims.Add(new Claim("roles", role));
+                }
+
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
+
+                var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+                var token = new JwtSecurityToken(configuration["Jwt:Issuer"], configuration["Jwt:Audience"], claims, expires: DateTime.UtcNow.AddDays(1), signingCredentials: signIn);
+
+                return StatusCode((int)HttpStatusCode.OK, new { status = (int)HttpStatusCode.OK, data = new JwtSecurityTokenHandler().WriteToken(token)});
             }
             else
             {
@@ -86,4 +108,4 @@ namespace NETCore.Controllers
             }
         }
     }
-}//
+}

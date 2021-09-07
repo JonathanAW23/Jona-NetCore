@@ -4,11 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace NETCore.Models
 {
     public class Education
     {
+        [Key]
         public int Id { get; set; }
         public string Degree { get; set; }
         public string GPA { get; set; }

@@ -283,3 +283,4 @@ C:\Users\black\source\repos\NETCore\NETCore\bin\Debug\netcoreapp3.1\Swashbuckle.
 C:\Users\black\source\repos\NETCore\NETCore\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\black\source\repos\NETCore\NETCore\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\black\source\repos\NETCore\NETCore\obj\Debug\netcoreapp3.1\NETCore.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\black\source\repos\NETCore\NETCore\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

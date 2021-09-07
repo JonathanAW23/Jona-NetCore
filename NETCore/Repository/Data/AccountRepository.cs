@@ -44,6 +44,22 @@ namespace NETCore.Repository.Data
             else
                 return false;
         }
+        public string[] GetRole(string NIK) 
+        {
+            var getRole = (from a in myContext.Accounts
+                           join ar in myContext.AccountRoles on a.NIK equals ar.NIK
+                           join r in myContext.Roles on ar.Role_Id equals r.Id
+                           where a.NIK == NIK 
+                           select new Role { 
+                                Name = r.Name
+                           }).ToList();
+            string[] roles = new string[getRole.Count];
+            for (int i = 0; i < getRole.Count; i++) 
+            {
+                roles[i] = getRole[i].Name;
+            }
+            return roles;
+        }
         public string ResetPasswordGenerator()
         {
             Guid g = Guid.NewGuid();
@@ -58,14 +74,14 @@ namespace NETCore.Repository.Data
                 MailMessage message = new MailMessage();
                 SmtpClient smtp = new SmtpClient();
                 message.From = new MailAddress("email pengirim");//email pengirim
-                message.To.Add("email penerima atau variable email yang dibuat");//email penerima (email testing atau string email yg disebut diatas)
+                message.To.Add("email penerima");//email penerima (email testing atau string email yg disebut diatas)
                 message.Subject = $"Reset Password Request From NETCoreTester {today}"; 
                 message.Body = $"Password anda sudah kami reset menjadi {password}";
                 smtp.Port = 587;
                 smtp.Host = "smtp.gmail.com";
                 smtp.EnableSsl = true;
                 smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("email pengirim", "password email pengirim"); //self explanatory
+                smtp.Credentials = new NetworkCredential("email pengirim", "email penerima"); //self explanatory
                 smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtp.Send(message);
                 return "Email berhasil Dikirim";

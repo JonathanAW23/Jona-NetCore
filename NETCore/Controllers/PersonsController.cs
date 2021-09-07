@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NETCore.Base;
 using NETCore.Models;
@@ -56,6 +58,7 @@ namespace NETCore.Controllers
 
         }
 
+        [EnableCors("AllowOrigin")]
         [HttpGet("GetPersonVM")]
 
         public ActionResult GetPersonVM()
@@ -70,7 +73,7 @@ namespace NETCore.Controllers
                 return StatusCode((int)HttpStatusCode.OK, new { status = (int)HttpStatusCode.OK, data = person });
             }
         }
-
+        [Authorize]
         [HttpGet("GetNIK/{NIK}")]
 
         public ActionResult GetNIK(string NIK)

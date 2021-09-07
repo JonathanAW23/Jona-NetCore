@@ -19,6 +19,6 @@ namespace NETCore.Models
         [JsonIgnore]
         public virtual Profiling Profiling { get; set; }
         [JsonIgnore]
-        public virtual AccountRole AccountRole { get; set; }
+        public virtual ICollection<AccountRole> AccountRoles { get; set; }
     }
 }

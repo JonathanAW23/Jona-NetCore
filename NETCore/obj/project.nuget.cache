@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "IehvvZT3s/pSuOuJtkWj4kSRQwe5H0bvbJfAZwepykzQu5jRpjguoXZvBU6C+BsGDdh0nDOQB7E6dI0naQwAIg==",
+  "dgSpecHash": "WuwTlBLT67SCTCERqEEBYE6+l38l214WwGOe4ZfuJYUban2JCpopizFsxwJwvTuf7v4luT5IU1VthksSmiOLPw==",
   "success": true,
   "projectFilePath": "C:\\Users\\black\\source\\repos\\NETCore\\NETCore\\NETCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\black\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\black\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\black\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\black\\.nuget\\packages\\jquery\\3.6.0\\jquery.3.6.0.nupkg.sha512",
+    "C:\\Users\\black\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.8\\microsoft.aspnetcore.authentication.jwtbearer.3.1.8.nupkg.sha512",
     "C:\\Users\\black\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\black\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.0.0\\microsoft.aspnetcore.jsonpatch.3.0.0.nupkg.sha512",
     "C:\\Users\\black\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.0.0\\microsoft.aspnetcore.mvc.newtonsoftjson.3.0.0.nupkg.sha512",

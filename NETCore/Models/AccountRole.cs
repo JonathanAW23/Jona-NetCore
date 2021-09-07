@@ -10,8 +10,9 @@ namespace NETCore.Models
 {
     public class AccountRole
     {
-        [Key]
-        [ForeignKey("Account")]
+        [Key] 
+        public int Id { get; set; }
+        [ForeignKey("NIK")]
         public string NIK { get; set; }
         [ForeignKey("Role_Id")]
         public int Role_Id { get; set; }
