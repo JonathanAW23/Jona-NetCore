@@ -1,0 +1,143 @@
+﻿/*a {
+    border: 1px solid green;
+    padding: 5px;
+    display: block
+}
+a:hover {
+    background-color: #e5eecc;
+}
+#container {
+    border: 1px solid green;
+    padding: 15px;
+    min-width: 1px;
+    min-height: 1px;
+    display: inline-block
+}
+#a {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    border: 1px solid red;
+    padding: 15px;
+    min-width: 1px;
+    min-height: 1px;
+    display: block
+}
+#b {
+    margin-top: 0px;
+    border: 1px solid blue;
+    padding: 15px;
+    min-width: 1px;
+    min-height: 1px;
+    display: inline-block
+}
+.p1 {
+    margin-top: 0px;
+    border: 1px solid brown;
+    padding: 5px;
+}
+.p2 {
+    border: 1px solid brown;
+    padding: 5px;
+}
+.p3 {
+    border: 1px solid brown;
+    padding: 5px;
+    margin-bottom: 0px;
+}
+ul {
+    margin: auto;
+    border: 1px solid brown;
+}
+.p1:hover {
+    background-color: darkred
+}
+.p2:hover {
+    background-color: deepskyblue
+}
+.p3:hover {
+    background-color: darkslategrey
+}
+.p1:target {
+    background-color: aquamarine
+}
+ul.types{
+    padding-left : 10px;
+    border-color: white;
+}
+ul.detail {
+    padding-left: 15px;
+    border-color: white;
+}
+.badge-normal {
+    background-color: antiquewhite
+}
+.badge-fire {
+    background-color: orangered
+}
+.badge-water {
+    background-color: royalblue
+}
+.badge-grass {
+    background-color: lightgreen
+}
+.badge-electric {
+    background-color: gold
+}
+.badge-ice {
+    background-color: lightskyblue
+}
+.badge-fighting {
+    background-color: brown
+}
+.badge-poison {
+    background-color: rebeccapurple
+}
+.badge-ground {
+    background-color: lightgoldenrodyellow
+}
+.badge-flying {
+    background-color: plum
+}
+.badge-psychic {
+    background-color: hotpink
+}
+.badge-bug {
+    background-color: darkseagreen
+}
+.badge-rock {
+    background-color: burlywood
+}
+.badge-ghost {
+    background-color: cornflowerblue
+}
+.badge-dark {
+    background-color: saddlebrown
+}
+.badge-dragon {
+    background-color: darkmagenta
+}
+.badge-steel {
+    background-color: darkgray
+}
+.badge-fairy {
+    background-color: pink
+}
+thead {
+    background-color: lightslategrey
+}
+th {
+    color : white
+}
+.head-red {
+    background-color: red
+}
+.foot-red {
+    background-color: red
+}
+.title-white {
+    color: white
+}
+img {
+    max-width: 100%;
+    max-height: 100%;
+}*/

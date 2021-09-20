@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NETCore.Repository.Data
 {
-    public class UniversityRepository : GeneralRepository<MyContext, University, string>
+    public class UniversityRepository : GeneralRepository<MyContext, University, int>
     {
         public UniversityRepository(MyContext myContext) : base(myContext)
         {

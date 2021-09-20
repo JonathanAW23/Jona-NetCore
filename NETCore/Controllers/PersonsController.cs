@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace NETCore.Controllers
 {
+    [EnableCors("AllowOrigin")]
     [Route("api/[controller]")]
     [ApiController]
     public class PersonsController : BaseController<Person, PersonRepository, string>
@@ -23,7 +24,8 @@ namespace NETCore.Controllers
         {
             this.personRepository = repository;
         }
-                                                   
+
+        [EnableCors("AllowOrigin")]
         [HttpPost("InsertPerson")]
         public ActionResult InsertPerson(GetPersonVM getPersonVM)
         {
@@ -58,7 +60,6 @@ namespace NETCore.Controllers
 
         }
 
-        [EnableCors("AllowOrigin")]
         [HttpGet("GetPersonVM")]
 
         public ActionResult GetPersonVM()
@@ -73,7 +74,7 @@ namespace NETCore.Controllers
                 return StatusCode((int)HttpStatusCode.OK, new { status = (int)HttpStatusCode.OK, data = person });
             }
         }
-        [Authorize]
+        [EnableCors("AllowOrigin")]
         [HttpGet("GetNIK/{NIK}")]
 
         public ActionResult GetNIK(string NIK)

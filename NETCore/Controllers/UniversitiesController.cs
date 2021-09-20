@@ -12,7 +12,7 @@ namespace NETCore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UniversitiesController : BaseController<University, UniversityRepository, string>
+    public class UniversitiesController : BaseController<University, UniversityRepository, int>
     {
         public UniversitiesController(UniversityRepository repository) : base(repository)
         {

@@ -1,25 +1,204 @@
-﻿
-@{
-    Layout = null;
-}
+﻿<!DOCTYPE html>
 
-<!DOCTYPE html>
-
-<html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 </head>
-<body>
-</body>
-</html>
-<script>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-6">
+                    <h1>Person Data</h1>
+                </div>
+                <div class="text-right col-6">
+                    <button class="open-Detail btn btn-primary" data-toggle="modal" data-target="#register">Register</button>
+                </div>
+            </div>  
+        </div>
+        <div class="card-body">
+            <div class="container">
+                <div class="text-center">
+                    <table id="tablee" class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <td>No</td>
+                                <td>NIK</td>
+                                <td>Full Name</td>
+                                <td>Phone Number</td>
+                                <td>Action</td>
+                            </tr>
+                        </thead>
+                        <tbody id="CORS">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    $.ajax({
-        url: "https://localhost:44300/API/Persons/GetPersonVM",
-        success: function (result) {
-            console.log(result);
-        }
-    })
-</script>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title detail-title" id="exampleModalLabel">Detail</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body detail-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="register" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="register">Register</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="formregister" class="need-validations">
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col-6">
+                            <label for="validationCustom01">Full name</label>
+                            <input type="text" class="form-control" id="validationCustom01" placeholder="Full name" required>
+                            <div class="invalid-feedback">
+                                <span id="msgFN"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-6">
+                            <label for="validationCustom03">NIK</label>
+                            <input type="text" class="form-control" id="validationCustom03" placeholder="NIK" required>
+                            <div class="invalid-feedback">
+                                <span id="msgNIK"></span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="validationCustom04">Email</label>
+                            <input type="text" class="form-control" id="validationCustom04" placeholder="Email" required>
+                            <div class="invalid-feedback">
+                                <span id="msgEmail"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-6">
+                            <label for="validationCustom05">Degree</label>
+                            <input type="text" class="form-control" id="validationCustom05" placeholder="Degree" required>
+                            <div class="invalid-feedback">
+                                <span id="msgDegree"></span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="validationCustom06">GPA</label>
+                            <input type="text" class="form-control" id="validationCustom06" placeholder="GPA" required>
+                            <div class="invalid-feedback">
+                                <span id="msgGPA"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputGender">Pilih Jenis Kelamin</label>
+                        <select id="inputGender" name="inputGenderName" class="form-control">
+                            <option value="0">Male</option>
+                            <option value="1">Female</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="notelp">No Telp</label>
+                        <input type="text" class="form-control" id="notelp" placeholder="No Telp" required>
+                        <div class="invalid-feedback">
+                            <span id="msgPhone"></span>
+                        </div>
+                    </div>
+                    <label for="validationsalary">Salary</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend">Rp.</span>
+                        </div>
+                        <input type="text" class="form-control" id="validationgaji" placeholder="Gaji Anda" aria-describedby="inputGroupPrepend" required>
+                        <div class="invalid-feedback">
+                            <span id="msgSalary"></span>
+                        </div>
+                    </div>
+                    <label for="start">BirthDate</label>
+                    <div>
+                        <input type="date" id="start" name="trip-start"
+                               value="2018-07-22"
+                               min="1900-01-01" max="2021-12-31" required>
+                    </div>
+                    <div>
+                        <label for="inputpassword">Password</label>
+                        <input type="text" class="form-control" id="inputpassword" placeholder="Password" required>
+                        <div class="invalid-feedback">
+                            <span id="msgPW"></span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button id="submitdata" class="btn btn-primary" type="submit">Submit form</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-8">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <p class="h1 col-12">Charts</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Gender</h3>
+                </div>
+                <div class="card-body">
+                    <div id="chart1">
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Gender</h3>
+                </div>
+                <div class="card-body">
+                    <div id="chart2">
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Gender</h3>
+                </div>
+                <div class="card-body">
+                    <div id="chart3">
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+    </div>
+</div>

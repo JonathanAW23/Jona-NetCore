@@ -26,20 +26,21 @@ namespace NETCore.Context
                 .WithOne(p => p.Account)
                 .HasForeignKey<Profiling>(p => p.NIK);
 
+            modelBuilder.Entity<Account>()
+                .HasMany(a => a.AccountRoles)
+                .WithOne(ar => ar.Account);
+
+            modelBuilder.Entity<Role>()
+                .HasMany(r => r.AccountRoles)
+                .WithOne(ar => ar.Role);
+
             modelBuilder.Entity<AccountRole>()
-                .HasOne<Account>(ar => ar.Account)
-                .WithMany(a => a.AccountRoles)
-                .HasForeignKey(ar => ar.NIK);
+                .HasKey(a => new { a.NIK, a.Role_Id });
 
             modelBuilder.Entity<Profiling>()
                 .HasOne<Education>(p => p.Education)
                 .WithMany(e => e.Profilings)
                 .HasForeignKey(p => p.Education_Id);
-
-            modelBuilder.Entity<AccountRole>()
-               .HasOne<Role>(ar => ar.Role)
-               .WithMany(r => r.AccountRoles)
-               .HasForeignKey(ar => ar.Role_Id);
 
             modelBuilder.Entity<Education>()
                 .HasOne<University>(e => e.University)
@@ -47,8 +48,8 @@ namespace NETCore.Context
                 .HasForeignKey(e => e.University_Id);
 
         }
-        
-       
+
+
         public DbSet<Person> Persons { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Profiling> Profilings { get; set; }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NETCore.Repository.Interface;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace NETCore.Base
 {
+    [EnableCors("AllowOrigin")]
     [Route("api/[controller]")]
     [ApiController]
     public class BaseController<Entity, Repository, Key> : ControllerBase

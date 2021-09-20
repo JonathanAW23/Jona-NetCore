@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,11 +11,10 @@ namespace NETCore.Models
 {
     public class AccountRole
     {
-        [Key] 
-        public int Id { get; set; }
-        [ForeignKey("NIK")]
+        [ForeignKey("Account")]
         public string NIK { get; set; }
-        [ForeignKey("Role_Id")]
+
+        [ForeignKey("Role")]
         public int Role_Id { get; set; }
         [JsonIgnore]
         public virtual Account Account { get; set; }

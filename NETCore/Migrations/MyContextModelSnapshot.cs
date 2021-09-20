@@ -40,11 +40,11 @@ namespace NETCore.Migrations
                     b.Property<int>("Role_Id")
                         .HasColumnType("int");
 
-                    b.HasKey("NIK");
+                    b.HasKey("NIK", "Role_Id");
 
                     b.HasIndex("Role_Id");
 
-                    b.ToTable("AccountRole");
+                    b.ToTable("AccountRoles");
                 });
 
             modelBuilder.Entity("NETCore.Models.Education", b =>
@@ -128,7 +128,7 @@ namespace NETCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Role");
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("NETCore.Models.University", b =>
@@ -160,8 +160,8 @@ namespace NETCore.Migrations
             modelBuilder.Entity("NETCore.Models.AccountRole", b =>
                 {
                     b.HasOne("NETCore.Models.Account", "Account")
-                        .WithOne("AccountRole")
-                        .HasForeignKey("NETCore.Models.AccountRole", "NIK")
+                        .WithMany("AccountRoles")
+                        .HasForeignKey("NIK")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -208,7 +208,7 @@ namespace NETCore.Migrations
 
             modelBuilder.Entity("NETCore.Models.Account", b =>
                 {
-                    b.Navigation("AccountRole");
+                    b.Navigation("AccountRoles");
 
                     b.Navigation("Profiling");
                 });

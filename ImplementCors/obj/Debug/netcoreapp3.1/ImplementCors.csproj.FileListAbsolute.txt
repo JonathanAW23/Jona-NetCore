@@ -123,3 +123,4 @@ C:\Users\black\source\repos\NETCore\ImplementCors\bin\Debug\netcoreapp3.1\Micros
 C:\Users\black\source\repos\NETCore\ImplementCors\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 C:\Users\black\source\repos\NETCore\ImplementCors\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
 C:\Users\black\source\repos\NETCore\ImplementCors\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+C:\Users\black\source\repos\NETCore\ImplementCors\obj\Debug\netcoreapp3.1\Razor\Views\LatihanCSS\Index.cshtml.g.cs
