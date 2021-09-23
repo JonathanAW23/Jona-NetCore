@@ -46,11 +46,13 @@ namespace NETCore.Base
             var temp = repository.Get();
             if (temp == null)
             {
-                return StatusCode((int)HttpStatusCode.NotFound, new { status = (int)HttpStatusCode.NotFound, data = "No result" });
+                return NotFound(temp);                
+                //return StatusCode((int)HttpStatusCode.NotFound, new { status = (int)HttpStatusCode.NotFound, data = "No result" });
             }
             else
             {
-                return StatusCode((int)HttpStatusCode.OK, new { status = (int)HttpStatusCode.OK, data = temp });
+                return Ok(temp);
+                //return StatusCode((int)HttpStatusCode.OK, new { status = (int)HttpStatusCode.OK, data = temp });
             }
         }
 
@@ -61,11 +63,13 @@ namespace NETCore.Base
             var temp = repository.Get(key);
             if (temp == null)
             {
-                return StatusCode((int)HttpStatusCode.NotFound, new { status = (int)HttpStatusCode.NotFound, data = "No result" });
+                return NotFound(temp);
+                //return StatusCode((int)HttpStatusCode.NotFound, new { status = (int)HttpStatusCode.NotFound, data = "No result" });
             }
             else
             {
-                return StatusCode((int)HttpStatusCode.OK, new { status = (int)HttpStatusCode.OK, data = temp });
+                return Ok(temp);
+                //return StatusCode((int)HttpStatusCode.OK, new { status = (int)HttpStatusCode.OK, data = temp });
             }
         }
 

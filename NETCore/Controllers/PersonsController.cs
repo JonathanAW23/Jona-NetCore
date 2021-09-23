@@ -67,14 +67,15 @@ namespace NETCore.Controllers
             var person = personRepository.GetPersonVMs();
             if (person == null)
             {
-                return StatusCode((int)HttpStatusCode.NotFound, new { status = (int)HttpStatusCode.NotFound, data = "No result" });
+                return NotFound(person);
+                //return StatusCode((int)HttpStatusCode.NotFound, new { status = (int)HttpStatusCode.NotFound, data = "No result" });
             }
             else
             {
-                return StatusCode((int)HttpStatusCode.OK, new { status = (int)HttpStatusCode.OK, data = person });
+                return Ok(person);
+                //return StatusCode((int)HttpStatusCode.OK, new { status = (int)HttpStatusCode.OK, data = person });
             }
         }
-        [EnableCors("AllowOrigin")]
         [HttpGet("GetNIK/{NIK}")]
 
         public ActionResult GetNIK(string NIK)
@@ -82,11 +83,13 @@ namespace NETCore.Controllers
             var person = personRepository.GetPersonVMsNIK(NIK);
             if (person == null)
             {
-                return StatusCode((int)HttpStatusCode.NotFound, new { status = (int)HttpStatusCode.NotFound, data = "No result" });
+                return NotFound(person);
+                //return StatusCode((int)HttpStatusCode.NotFound, new { status = (int)HttpStatusCode.NotFound, data = "No result" });
             }
             else
             {
-                return StatusCode((int)HttpStatusCode.OK, new { status = (int)HttpStatusCode.OK, data = person });
+                return Ok(person);
+                //return StatusCode((int)HttpStatusCode.OK, new { status = (int)HttpStatusCode.OK, data = person });
             }
         }
     }

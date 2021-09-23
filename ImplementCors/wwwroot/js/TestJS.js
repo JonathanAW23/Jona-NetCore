@@ -218,7 +218,7 @@
 //}
 
 $.ajax({
-    url: "https://localhost:44300/api/persons/GetPersonVM"
+    url: "persons/getallpersons"
 }).done((result) => {
     var text = "";
     $.each(result.data, function (key, val) {
@@ -262,9 +262,9 @@ let table = $('#tablee').DataTable({
     ],
     "filter": true,
     "ajax": {
-        "url": "https://localhost:44300/API/Persons/GetPersonVM",
+        "url": "persons/getallpersons",
         "datatype": "json",
-        "dataSrc": "data"
+        "dataSrc": ""
     },
     "columns": [
         {
@@ -322,28 +322,31 @@ let table = $('#tablee').DataTable({
 
 const detailItem = (nik) => {
     $.ajax({
-        url: 'https://localhost:44300/API/persons/getnik/' + nik
+        url: 'persons/getpersonsid/' + nik
     }).done(result => {
         console.log(result)
-        let gender =""
-        if (result.data[0].gender === 0) {
-            gender = "Male"
-        } else {
-            gender = "Female"
-        }
-        let detailText = `<ul class="detail">
-                            <li><b>NIK          : </b>${result.data[0].nik}</li>
-                            <li><b>Name         : </b>${result.data[0].fullName}</li>
+        result.map(item => {
+            let gender = ""
+            if (item.gender === 0) {
+                gender = "Male"
+            } else {
+                gender = "Female"
+            }
+            let detailText = `<ul class="detail">
+                            <li><b>NIK          : </b>${item.nik}</li>
+                            <li><b>Name         : </b>${item.fullName}</li>
                             <li><b>Gender       : </b>${gender}</li>
-                            <li><b>Email        : </b>${result.data[0].email}</li>
-                            <li><b>Phone        : </b>${result.data[0].phone}</li>
-                            <li><b>Birth Date   : </b>${result.data[0].birthDate}</li>
-                            <li><b>Salary       : </b>Rp. ${moneyMaker(result.data[0].salary)}</li>
-                            <li><b>Degree       : </b>${result.data[0].degree}</li>
-                            <li><b>GPA          : </b>${result.data[0].gpa}</li>
+                            <li><b>Email        : </b>${item.email}</li>
+                            <li><b>Phone        : </b>${item.phone}</li>
+                            <li><b>Birth Date   : </b>${item.birthDate}</li>
+                            <li><b>Salary       : </b>Rp. ${moneyMaker(item.salary)}</li>
+                            <li><b>Degree       : </b>${item.degree}</li>
+                            <li><b>GPA          : </b>${item.gpa}</li>
                           </ul>`;
-        $('.detail-body').html(detailText);
-        $('h5.detail-title').html(`More Information of ${result.data[0].fullName}`);
+            $('.detail-body').html(detailText);
+            $('h5.detail-title').html(`More Information of ${item.fullName}`);
+        })
+        
     }).fail(result => {
         console.log(result);
     });
@@ -387,10 +390,10 @@ $("#submitdata").click(function (event) {
     console.log(JSON.stringify(obj_register));
 
     $.ajax({
-        url: "https://localhost:44300/API/Persons/InsertPerson",
+        url: "persons/PostPerson",
         type: "POST",
         dataType: 'json',
-        contentType: 'application/json',
+        contentType: 'application/json; charset=utf-8',
         crossDomain: true,
         data: JSON.stringify(obj_register),
         success: function (data) {
@@ -464,12 +467,12 @@ function checkValid(errMsg, eleById, eleMsg) {
 
 $(document).ready(() => {
     $.ajax({
-        url: 'https://localhost:44300/api/persons/GetPersonVM',
+        url: 'persons/GetAllPersons',
         type: "GET"
     }).done((result) => {
         console.log(result);
-        var female = result.data.filter(data => data.gender === 1).length;
-        var male = result.data.filter(data => data.gender === 0).length;
+        var female = result.filter(data => data.gender === 1).length;
+        var male = result.filter(data => data.gender === 0).length;
         console.log(male);
         console.log(female);
         var options = {
@@ -526,12 +529,12 @@ $(document).ready(() => {
 
 $(document).ready(() => {
     $.ajax({
-        url: 'https://localhost:44300/api/persons/GetPersonVM',
+        url: 'persons/GetAllPersons',
         type: "GET"
     }).done((result) => {
         console.log(result);
-        var female = result.data.filter(data => data.gender === 1).length;
-        var male = result.data.filter(data => data.gender === 0).length;
+        var female = result.filter(data => data.gender === 1).length;
+        var male = result.filter(data => data.gender === 0).length;
         console.log(male);
         console.log(female);
         var options = {
@@ -562,12 +565,12 @@ $(document).ready(() => {
 
 $(document).ready(() => {
     $.ajax({
-        url: 'https://localhost:44300/api/persons/GetPersonVM',
+        url: 'persons/GetAllPersons',
         type: "GET"
     }).done((result) => {
         console.log(result);
-        var female = result.data.filter(data => data.gender === 1).length;
-        var male = result.data.filter(data => data.gender === 0).length;
+        var female = result.filter(data => data.gender === 1).length;
+        var male = result.filter(data => data.gender === 0).length;
         console.log(male);
         console.log(female);
         var options = {

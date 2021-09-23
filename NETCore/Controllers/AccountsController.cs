@@ -36,7 +36,8 @@ namespace NETCore.Controllers
             string NIK = accountRepository.CheckEmail(loginVM.Email);
             if (string.IsNullOrEmpty(NIK))
             {
-                return StatusCode((int)HttpStatusCode.NotFound, new { status = (int)HttpStatusCode.NotFound, data = "Data tidak ada didatabase" });
+                return NotFound(new JWTokenVm { Token = null, Messages = "Login Gagal" });
+                //return StatusCode((int)HttpStatusCode.NotFound, new { status = (int)HttpStatusCode.NotFound, data = "Data tidak ada didatabase" });
             }
             else if (accountRepository.CheckPassword(NIK, loginVM.Password))
             {
@@ -55,11 +56,13 @@ namespace NETCore.Controllers
 
                 var token = new JwtSecurityToken(configuration["Jwt:Issuer"], configuration["Jwt:Audience"], claims, expires: DateTime.UtcNow.AddDays(1), signingCredentials: signIn);
 
-                return StatusCode((int)HttpStatusCode.OK, new { status = (int)HttpStatusCode.OK, data = new JwtSecurityTokenHandler().WriteToken(token)});
+                return Ok(new JWTokenVm { Token = new JwtSecurityTokenHandler().WriteToken(token), Messages = "Login Berhasil" });
+                //return StatusCode((int)HttpStatusCode.OK, new { status = (int)HttpStatusCode.OK, data = new JwtSecurityTokenHandler().WriteToken(token)});
             }
             else
             {
-                return StatusCode((int)HttpStatusCode.OK, new { status = (int)HttpStatusCode.OK, data = "Password salah" });
+                return Ok(new JWTokenVm { Token = null, Messages = "anggap saja Login Berhasil" });
+                //return StatusCode((int)HttpStatusCode.OK, new { status = (int)HttpStatusCode.OK, data = "Password salah" });
             }
         }
 
